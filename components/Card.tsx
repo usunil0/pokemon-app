@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HomeWorld } from "../types/common";
 
 const Title=({title}:{title:string})=>(
   <h5 className="text-gray-900 text-xl leading-tight font-bold mb-2">{title}</h5>
@@ -6,7 +7,6 @@ const Title=({title}:{title:string})=>(
 
 const KeyAndValue=(props:{keyName:string,value:string})=>{
   const {keyName,value}=props
-
   return <div className="mb-2"><span className="text-gray-900 font-bold mb-2">{keyName}</span> : <span className="text-gray-700 font-medium ">{value}</span></div>
 }
 
@@ -16,16 +16,8 @@ interface CardProps{
   gender:string
   eyeColor:string
   hairColor:string
-  homeworld?:{
-    id:string
-    population:string
-    diameter:string
-    name:string
-  }
-
+  homeworld?:HomeWorld
 }
-
-
 
 const Card = (props:CardProps)=>{
   const {

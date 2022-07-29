@@ -4,6 +4,7 @@ import { gql, useQuery } from "@apollo/client";
 
 import client from "../apollo-client";
 import Card from '../components/Card'
+import { HomeWorld } from '../types/common';
 
 
 const PeopleQuery =  gql`
@@ -32,12 +33,6 @@ query allPeople{
      }
 `
 
-interface HomeWorld{
-  id: string; 
-  population: string ;
-  diameter: string ;
-  name: string ;
- } 
 
 const Home: NextPage = () => {
   const { data } = useQuery(PeopleQuery,{
@@ -57,11 +52,13 @@ const Home: NextPage = () => {
 
   return (
     <div className="flex flex-row flex-wrap justify-center">
-      { allPeople.map((person)=>{
-        return(<Card
-         {...person}
-          />)
-      })}
+      { 
+      allPeople.map((person)=>{
+        return(
+        <Card {...person}  />
+        )
+      })
+      }
       </div>
   
   )
