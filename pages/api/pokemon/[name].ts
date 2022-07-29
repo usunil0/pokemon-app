@@ -9,8 +9,9 @@ export default async function  handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  //only get pikachu, go to http://localhost:3000/api/pokemon/{pokemonName} for any pokemon
-  const data = await fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+  const { name } = req.query
+
+  const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
   const json =  await data.json()
   
   res.status(200).json({data:json})
